@@ -1,1 +1,82 @@
-<p>courses works!</p>
+<!-- Encabezado -->
+<nav class="navbar navbar-expand bg-white border-bottom shadow-sm">
+  <div class="container-fluid">
+    <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+      <span class="rounded-3 bg-primary d-inline-block" style="width:24px;height:24px;"></span>
+      <span class="fw-semibold">Universidad Luminar</span>
+    </a>
+
+    <div class="ms-auto d-flex gap-2">
+      <a class="btn btn-outline-secondary" routerLink="/mis-cursos">Cursos</a>
+      <a class="btn btn-outline-secondary" routerLink="/perfil">Perfil</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Contenido principal -->
+<div class="container py-4">
+
+  <!-- Título + buscador -->
+  <div class="card shadow-sm rounded-4 mb-4">
+    <div class="card-body">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="h5 mb-0">Mis cursos</h2>
+        <a class="btn btn-outline-secondary" routerLink="/panel">Panel</a>
+      </div>
+      <div class="input-group">
+        <span class="input-group-text"><i class="bi bi-search"></i></span>
+        <input type="text" class="form-control" placeholder="Buscar curso…">
+      </div>
+    </div>
+  </div>
+
+  <!-- Grid de cursos -->
+  <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4">
+
+    <!-- Curso 1 -->
+    <div class="col">
+      <div class="card h-100 shadow-sm rounded-4">
+        <div class="ratio ratio-16x9 bg-primary-subtle rounded-top-4"></div>
+        <div class="card-body">
+          <h3 class="h6 mb-1">Algoritmos I</h3>
+          <p class="text-secondary mb-2">Sección A · Catedrático: Ing. R. Castillo</p>
+          <div class="d-flex justify-content-between align-items-center">
+            <small class="text-secondary">Próxima: Parcial 28/10</small>
+            <a class="btn btn-outline-primary btn-sm" routerLink="/aula">Entrar →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Curso 2 -->
+    <div class="col">
+      <div class="card h-100 shadow-sm rounded-4">
+        <div class="ratio ratio-16x9 bg-primary-subtle rounded-top-4"></div>
+        <div class="card-body">
+          <h3 class="h6 mb-1">Bases de Datos</h3>
+          <p class="text-secondary mb-2">Sección B · Licda. M. López</p>
+          <div class="d-flex justify-content-between align-items-center">
+            <small class="text-secondary">Entrega: Proyecto 02/11</small>
+            <a class="btn btn-outline-primary btn-sm" routerLink="/aula">Entrar →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Curso 3 -->
+    <div class="col">
+      <div class="card h-100 shadow-sm rounded-4">
+        <div class="ratio ratio-16x9 bg-primary-subtle rounded-top-4"></div>
+        <div class="card-body">
+          <h3 class="h6 mb-1">Redes de Computadoras</h3>
+          <p class="text-secondary mb-2">Sección C · Ing. J. Martínez</p>
+          <div class="d-flex justify-content-between align-items-center">
+            <small class="text-secondary">Foro activo</small>
+            <a class="btn btn-outline-primary btn-sm" routerLink="/aula">Entrar →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

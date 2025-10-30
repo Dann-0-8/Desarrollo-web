@@ -1,81 +1,85 @@
-<div class="login-bg d-flex align-items-center">
-  <div class="container">
+<!doctype html>
+<html lang="es" data-bs-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Universidad Luminar – Iniciar sesión</title>
+</head>
+<body class="bg-light">
+
+  <div class="container py-5">
     <div class="row justify-content-center">
-      <div class="col-sm-10 col-md-8 col-lg-5">
-        <div class="card shadow-lg border-0 rounded-4 overflow-hidden">
-          <div class="card-header text-center py-4 bg-school text-white">
-            <img src="assets/logo-colegio.svg" alt="Logo del colegio" class="logo mb-2" />
-            <h4 class="mb-0 fw-semibold">Portal Académico</h4>
-            <small>Inicio de sesión</small>
-          </div>
+      <div class="col-12 col-xl-10">
+        <div class="row g-0 shadow-lg rounded-4 overflow-hidden bg-white">
 
-          <div class="card-body p-4 p-md-5">
-            <form (ngSubmit)="submit()" #f="ngForm" novalidate>
-              <div class="mb-3">
-                <label class="form-label">Usuario</label>
-                <div class="input-group">
-                  <span class="input-group-text"><i class="bi bi-person"></i></span>
-                  <input
-                    class="form-control"
-                    name="username"
-                    [(ngModel)]="username"
-                    required
-                    autocomplete="username"
-                    placeholder="Ej. 2025-00123 o correo"
-                  />
+          <!-- Lado izquierdo -->
+          <aside class="col-12 col-lg-6 p-4 p-md-5 bg-body-secondary">
+            <span class="badge text-bg-light d-inline-flex align-items-center gap-2 mb-3">
+              <span class="fs-5">🎓</span> Universidad Luminar
+            </span>
+
+            <h1 class="display-6 mb-2">Plataforma Académica</h1>
+            <p class="text-secondary mb-4">
+              Comunícate, publica contenidos, asigna tareas y da retroalimentación en un mismo lugar.
+            </p>
+
+            <div class="ratio ratio-16x9 rounded-3 overflow-hidden border">
+              <img src="/assets/img/Campus.jpg" alt="Campus Luminar" class="w-100 h-100 object-fit-cover">
+
+
+            </div>
+          </aside>
+
+          <!-- Formulario -->
+          <section class="col-12 col-lg-6 p-4 p-md-5">
+            <h2 class="h3 mb-2">Iniciar sesión</h2>
+            <p class="text-secondary mb-4">Usa tu correo institucional para ingresar.</p>
+
+            <form onsubmit="event.preventDefault(); location.href='panel-principal.html'">
+              <div class="vstack gap-3">
+
+                <div>
+                  <label for="rol" class="form-label">Rol</label>
+                  <select id="rol" class="form-select" required>
+                    <option value="alumno">Alumno</option>
+                    <option value="docente">Docente</option>
+                  </select>
                 </div>
-                <div class="form-text">Tu número de carnet o correo institucional.</div>
-              </div>
 
-              <div class="mb-3">
-                <label class="form-label">Contraseña</label>
-                <div class="input-group">
-                  <span class="input-group-text"><i class="bi bi-lock"></i></span>
-                  <input
-                    class="form-control"
-                    name="password"
-                    [(ngModel)]="password"
-                    type="password"
-                    required
-                    autocomplete="current-password"
-                    placeholder="••••••••"
-                  />
+                <div>
+                  <label for="correo" class="form-label">Correo</label>
+                  <input id="correo" type="email" class="form-control" placeholder="usuario@luminar.edu" required>
                 </div>
-              </div>
 
-              <div class="mb-3">
-                <label class="form-label">Tipo de usuario</label>
-                <select class="form-select" [(ngModel)]="roleHint" name="roleHint">
-                  <option value="">Seleccionar…</option>
-                  <option value="student">Alumno</option>
-                  <option value="teacher">Maestro</option>
-                  <option value="admin">Administrador</option>
-                </select>
-              </div>
-
-              <div class="d-flex justify-content-between align-items-center mb-3">
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" id="remember" [(ngModel)]="remember" name="remember">
-                  <label class="form-check-label" for="remember">Recordarme</label>
+                <div>
+                  <label for="pwd" class="form-label">Contraseña</label>
+                  <input id="pwd" type="password" class="form-control" placeholder="••••••••" required>
                 </div>
-                <a class="link-school" href="#" (click)="$event.preventDefault()">¿Olvidaste tu contraseña?</a>
-              </div>
 
-              <button class="btn btn-school w-100 py-2" type="submit" [disabled]="f.invalid">
-                <i class="bi bi-box-arrow-in-right me-1"></i> Entrar
-              </button>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="remember">
+                    <label class="form-check-label text-secondary" for="remember">Recuérdame</label>
+                  </div>
+                  <a href="#" class="link-body-emphasis text-decoration-none">¿Olvidaste tu contraseña?</a>
+                </div>
 
-              <div *ngIf="error" class="alert alert-danger mt-3 mb-0 text-center">
-                {{ error }}
+                <button type="submit" class="btn btn-primary btn-lg w-100">Ingresar</button>
+
+                <small class="text-secondary d-block text-center mt-2">
+                  © <span id="yy"></span> Universidad Luminar
+                </small>
               </div>
             </form>
-          </div>
+          </section>
 
-          <div class="card-footer text-center small text-muted py-3 bg-light">
-            © {{ currentYear }} Colegio Santa María — Sistema Académico
-          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+
+  <script>
+    document.getElementById('yy').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

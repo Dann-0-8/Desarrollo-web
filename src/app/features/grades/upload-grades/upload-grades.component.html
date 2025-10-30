@@ -1,1 +1,153 @@
-<p>upload-grades works!</p>
+<div class="container py-4">
+
+  <!-- Encabezado + ayuda -->
+  <div class="card shadow-sm rounded-4 mb-4">
+    <div class="card-body">
+      <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+        <h2 class="h5 mb-0">Subir notas</h2>
+        <div class="d-flex gap-2">
+          <a class="btn btn-outline-secondary" routerLink="/panel">Panel</a>
+          <button class="btn btn-outline-primary"><i class="bi bi-question-circle me-1"></i>Ayuda</button>
+        </div>
+      </div>
+      <p class="text-secondary mb-0 mt-2">Carga calificaciones por curso y sección. Acepta CSV o XLSX con formato institucional.</p>
+    </div>
+  </div>
+
+  <!-- Filtros -->
+  <div class="card shadow-sm rounded-4 mb-4">
+    <div class="card-body">
+      <div class="row g-3">
+        <div class="col-12 col-md-5">
+          <label class="form-label">Curso</label>
+          <select class="form-select">
+            <option selected disabled>Selecciona un curso…</option>
+            <option>Algoritmos I</option>
+            <option>Bases de Datos</option>
+            <option>Redes de Computadoras</option>
+          </select>
+        </div>
+        <div class="col-6 col-md-3">
+          <label class="form-label">Sección</label>
+          <select class="form-select">
+            <option selected disabled>—</option>
+            <option>A</option><option>B</option><option>C</option>
+          </select>
+        </div>
+        <div class="col-6 col-md-4">
+          <label class="form-label">Evaluación</label>
+          <select class="form-select">
+            <option selected disabled>Selecciona…</option>
+            <option>Parcial 1</option>
+            <option>Parcial 2</option>
+            <option>Proyecto</option>
+            <option>Examen final</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Carga de archivo -->
+  <div class="card shadow-sm rounded-4 mb-4">
+    <div class="card-body">
+      <div class="row g-4">
+        <div class="col-12 col-lg-8">
+          <label class="form-label">Archivo de notas (CSV o XLSX)</label>
+          <div class="border rounded-4 p-4 text-center bg-body-tertiary">
+            <div class="mb-2">
+              <i class="bi bi-file-earmark-spreadsheet display-6"></i>
+            </div>
+            <p class="text-secondary mb-3">Arrastra y suelta aquí, o</p>
+            <div class="d-flex justify-content-center gap-2">
+              <input type="file" class="form-control" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" />
+              <button class="btn btn-primary">Subir</button>
+            </div>
+            <!-- Progreso (opcional) -->
+            <div class="progress mt-3" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+              <div class="progress-bar" style="width: 0%"></div>
+            </div>
+          </div>
+          <div class="form-text mt-2">
+            Usa el formato de columnas: <strong>carné, nombre, nota</strong>. El sistema valida duplicados y límites.
+          </div>
+        </div>
+
+        <div class="col-12 col-lg-4">
+          <div class="border rounded-4 p-3 bg-body-tertiary h-100">
+            <div class="d-flex align-items-center gap-2 mb-2">
+              <i class="bi bi-info-circle text-primary"></i>
+              <strong>Formato válido</strong>
+            </div>
+            <ul class="small text-secondary mb-0">
+              <li>CSV delimitado por coma o punto y coma.</li>
+              <li>Notas de 0 a 100 (decimales opcionales).</li>
+              <li>Un registro por estudiante.</li>
+              <li>Evita encabezados con caracteres especiales.</li>
+            </ul>
+            <div class="mt-3">
+              <a class="btn btn-outline-secondary btn-sm w-100">
+                <i class="bi bi-download me-1"></i>Descargar plantilla
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Acciones -->
+      <div class="d-flex justify-content-end gap-2 mt-4">
+        <button class="btn btn-outline-secondary">Cancelar</button>
+        <button class="btn btn-success">
+          <i class="bi bi-check2 me-1"></i>Confirmar y publicar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Historial -->
+  <div class="card shadow-sm rounded-4">
+    <div class="card-body">
+      <h3 class="h6 mb-3">Historial de cargas</h3>
+      <div class="table-responsive">
+        <table class="table align-middle">
+          <thead class="table-light">
+            <tr>
+              <th>Fecha</th>
+              <th>Curso</th>
+              <th>Sección</th>
+              <th>Evaluación</th>
+              <th>Registros</th>
+              <th class="text-end">Acción</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>25/10/2025</td>
+              <td>Algoritmos I</td>
+              <td>A</td>
+              <td>Parcial 1</td>
+              <td>42</td>
+              <td class="text-end">
+                <button class="btn btn-sm btn-outline-primary">Ver detalle</button>
+              </td>
+            </tr>
+            <tr>
+              <td>12/10/2025</td>
+              <td>Bases de Datos</td>
+              <td>B</td>
+              <td>Proyecto</td>
+              <td>38</td>
+              <td class="text-end">
+                <button class="btn btn-sm btn-outline-primary">Ver detalle</button>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="6" class="text-center text-secondary">No hay más registros.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</div>

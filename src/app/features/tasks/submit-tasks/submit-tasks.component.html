@@ -1,1 +1,287 @@
-<p>submit-tasks works!</p>
+<div class="container py-4">
+
+  <!-- Encabezado -->
+  <div class="card shadow-sm rounded-4 mb-4">
+    <div class="card-body">
+      <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+        <h2 class="h5 mb-0">Entrega de tareas</h2>
+        <div class="d-flex gap-2">
+          <a class="btn btn-outline-secondary" routerLink="/panel">Panel</a>
+          <a class="btn btn-outline-primary" routerLink="/subir-tareas">
+            <i class="bi bi-plus-circle me-1"></i>Nueva tarea
+          </a>
+        </div>
+      </div>
+      <p class="text-secondary mb-0 mt-2">
+        Revisa y califica las entregas recibidas. Filtra por curso, sección, tarea y estado.
+      </p>
+    </div>
+  </div>
+
+  <!-- Resumen -->
+  <div class="row g-3 mb-4">
+    <div class="col-6 col-md-3">
+      <div class="card border-0 shadow-sm rounded-4 h-100">
+        <div class="card-body">
+          <div class="text-secondary small">Entregas recibidas</div>
+          <div class="display-6 fw-semibold">28</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-6 col-md-3">
+      <div class="card border-0 shadow-sm rounded-4 h-100">
+        <div class="card-body">
+          <div class="text-secondary small">Pendientes</div>
+          <div class="display-6 fw-semibold">12</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-6 col-md-3">
+      <div class="card border-0 shadow-sm rounded-4 h-100">
+        <div class="card-body">
+          <div class="text-secondary small">Con retraso</div>
+          <div class="display-6 fw-semibold">5</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-6 col-md-3">
+      <div class="card border-0 shadow-sm rounded-4 h-100">
+        <div class="card-body">
+          <div class="text-secondary small">Calificadas</div>
+          <div class="display-6 fw-semibold">19</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Filtros -->
+  <div class="card shadow-sm rounded-4 mb-4">
+    <div class="card-body">
+      <div class="row g-3 align-items-end">
+        <div class="col-12 col-md-4">
+          <label class="form-label">Curso</label>
+          <select class="form-select">
+            <option selected disabled>Selecciona un curso…</option>
+            <option>Algoritmos I</option>
+            <option>Bases de Datos</option>
+            <option>Redes de Computadoras</option>
+          </select>
+        </div>
+        <div class="col-6 col-md-2">
+          <label class="form-label">Sección</label>
+          <select class="form-select">
+            <option selected disabled>—</option>
+            <option>A</option><option>B</option><option>C</option>
+          </select>
+        </div>
+        <div class="col-12 col-md-4">
+          <label class="form-label">Tarea</label>
+          <select class="form-select">
+            <option selected disabled>Selecciona la tarea…</option>
+            <option>Tarea 3 – Árboles binarios</option>
+            <option>Informe – Normalización</option>
+            <option>Laboratorio – Subredes</option>
+          </select>
+        </div>
+        <div class="col-6 col-md-2">
+          <label class="form-label">Estado</label>
+          <select class="form-select">
+            <option value="">Todos</option>
+            <option>Entregado</option>
+            <option>Pendiente</option>
+            <option>Retraso</option>
+            <option>Calificado</option>
+          </select>
+        </div>
+
+        <div class="col-12 col-md-6">
+          <label class="form-label">Buscar</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-search"></i></span>
+            <input type="text" class="form-control" placeholder="Nombre o carné del estudiante…">
+            <button class="btn btn-outline-secondary">Limpiar</button>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-6 d-flex justify-content-end gap-2">
+          <button class="btn btn-outline-secondary"><i class="bi bi-arrow-repeat me-1"></i>Actualizar</button>
+          <button class="btn btn-outline-primary"><i class="bi bi-download me-1"></i>Exportar CSV</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tabla de entregas -->
+  <div class="card shadow-sm rounded-4">
+    <div class="card-body">
+      <div class="d-flex justify-content-between align-items-center mb-2">
+        <h3 class="h6 mb-0">Entregas recibidas</h3>
+        <div class="small text-secondary">Mostrando 1–10 de 40</div>
+      </div>
+
+      <div class="table-responsive">
+        <table class="table align-middle">
+          <thead class="table-light">
+            <tr>
+              <th style="width:40px;"><input class="form-check-input" type="checkbox"></th>
+              <th>Estudiante</th>
+              <th>Carné</th>
+              <th>Fecha de entrega</th>
+              <th>Estado</th>
+              <th>Archivo</th>
+              <th style="width:140px;">Calificación</th>
+              <th class="text-end" style="width:160px;">Acción</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Row 1 -->
+            <tr>
+              <td><input class="form-check-input" type="checkbox"></td>
+              <td class="fw-semibold">María Gutiérrez</td>
+              <td>20200123</td>
+              <td>24/10/2025 20:15</td>
+              <td>
+                <span class="badge rounded-pill bg-primary-subtle text-primary-emphasis">Entregado</span>
+              </td>
+              <td>
+                <a href="#" class="link-primary text-decoration-none"><i class="bi bi-file-earmark-pdf me-1"></i>tarea_mg.pdf</a>
+              </td>
+              <td>
+                <div class="input-group input-group-sm">
+                  <input type="number" class="form-control" min="0" max="100" placeholder="—">
+                  <span class="input-group-text">/100</span>
+                </div>
+              </td>
+              <td class="text-end">
+                <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#detalleEntregaModal">
+                  Ver
+                </button>
+                <button class="btn btn-sm btn-success">Guardar</button>
+              </td>
+            </tr>
+
+            <!-- Row 2 -->
+            <tr>
+              <td><input class="form-check-input" type="checkbox"></td>
+              <td class="fw-semibold">Luis Pérez</td>
+              <td>20200077</td>
+              <td>25/10/2025 00:30</td>
+              <td>
+                <span class="badge rounded-pill bg-warning-subtle text-warning-emphasis">Retraso</span>
+              </td>
+              <td>
+                <a href="#" class="link-primary text-decoration-none"><i class="bi bi-file-earmark-zip me-1"></i>lp_tarea3.zip</a>
+              </td>
+              <td>
+                <div class="input-group input-group-sm">
+                  <input type="number" class="form-control" min="0" max="100" value="85">
+                  <span class="input-group-text">/100</span>
+                </div>
+              </td>
+              <td class="text-end">
+                <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#detalleEntregaModal">
+                  Ver
+                </button>
+                <button class="btn btn-sm btn-success">Guardar</button>
+              </td>
+            </tr>
+
+            <!-- Row 3 -->
+            <tr>
+              <td><input class="form-check-input" type="checkbox"></td>
+              <td class="fw-semibold">Diana López</td>
+              <td>20210211</td>
+              <td>—</td>
+              <td>
+                <span class="badge rounded-pill bg-secondary-subtle text-secondary-emphasis">Pendiente</span>
+              </td>
+              <td>—</td>
+              <td>
+                <div class="input-group input-group-sm">
+                  <input type="number" class="form-control" min="0" max="100" placeholder="—" disabled>
+                  <span class="input-group-text">/100</span>
+                </div>
+              </td>
+              <td class="text-end">
+                <button class="btn btn-sm btn-outline-secondary" disabled>Ver</button>
+                <button class="btn btn-sm btn-outline-secondary" disabled>Guardar</button>
+              </td>
+            </tr>
+
+            <!-- Más filas... -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Acciones masivas + paginación -->
+      <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mt-3">
+        <div class="d-flex gap-2">
+          <button class="btn btn-outline-secondary btn-sm">Marcar como revisadas</button>
+          <button class="btn btn-outline-secondary btn-sm">Descargar seleccionadas</button>
+          <button class="btn btn-outline-secondary btn-sm">Eliminar seleccionadas</button>
+        </div>
+
+        <nav>
+          <ul class="pagination pagination-sm mb-0">
+            <li class="page-item disabled"><a class="page-link">Anterior</a></li>
+            <li class="page-item active"><a class="page-link">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">Siguiente</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <!-- Publicar -->
+      <div class="d-flex justify-content-end gap-2 mt-3">
+        <button class="btn btn-outline-secondary">Guardar borradores</button>
+        <button class="btn btn-success"><i class="bi bi-upload me-1"></i>Publicar calificaciones</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Detalle de entrega -->
+<div class="modal fade" id="detalleEntregaModal" tabindex="-1" aria-labelledby="detalleEntregaLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-scrollable">
+    <div class="modal-content rounded-4">
+      <div class="modal-header">
+        <h5 class="modal-title" id="detalleEntregaLabel">Detalle de entrega</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row g-3">
+          <div class="col-12 col-md-6">
+            <div class="border rounded-4 p-3 bg-body-tertiary h-100">
+              <div class="small text-secondary">Estudiante</div>
+              <div class="fw-semibold">María Gutiérrez</div>
+              <div class="small text-secondary mt-2">Carné</div>
+              <div>20200123</div>
+              <div class="small text-secondary mt-2">Fecha de entrega</div>
+              <div>24/10/2025 20:15</div>
+              <div class="small text-secondary mt-2">Estado</div>
+              <div><span class="badge rounded-pill bg-primary-subtle text-primary-emphasis">Entregado</span></div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6">
+            <div class="border rounded-4 p-3 bg-body-tertiary h-100">
+              <div class="small text-secondary">Archivo</div>
+              <a href="#" class="link-primary text-decoration-none"><i class="bi bi-file-earmark-pdf me-1"></i>tarea_mg.pdf</a>
+              <div class="small text-secondary mt-3">Observaciones</div>
+              <textarea class="form-control" rows="4" placeholder="Comentarios para el estudiante…"></textarea>
+              <div class="small text-secondary mt-3">Calificación</div>
+              <div class="input-group input-group-sm">
+                <input type="number" class="form-control" min="0" max="100" value="90">
+                <span class="input-group-text">/100</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button class="btn btn-success">Guardar cambios</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,1 +1,179 @@
-<p>announcements works!</p>
+<div class="container py-4">
+
+  <!-- Encabezado -->
+  <div class="card shadow-sm rounded-4 mb-4">
+    <div class="card-body">
+      <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+        <h2 class="h5 mb-0">Anuncios de clase</h2>
+        <div class="d-flex gap-2">
+          <a class="btn btn-outline-secondary" routerLink="/panel">Panel</a>
+          <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#nuevoAnuncioModal">
+            <i class="bi bi-megaphone me-1"></i>Nuevo anuncio
+          </button>
+        </div>
+      </div>
+      <p class="text-secondary mb-0 mt-2">
+        Publica avisos importantes para tus estudiantes o consulta los más recientes por curso y sección.
+      </p>
+    </div>
+  </div>
+
+  <!-- Filtros -->
+  <div class="card shadow-sm rounded-4 mb-4">
+    <div class="card-body">
+      <div class="row g-3">
+        <div class="col-12 col-md-4">
+          <label class="form-label">Curso</label>
+          <select class="form-select">
+            <option selected disabled>Selecciona un curso…</option>
+            <option>Algoritmos I</option>
+            <option>Bases de Datos</option>
+            <option>Redes de Computadoras</option>
+          </select>
+        </div>
+        <div class="col-6 col-md-2">
+          <label class="form-label">Sección</label>
+          <select class="form-select">
+            <option selected disabled>—</option>
+            <option>A</option><option>B</option><option>C</option>
+          </select>
+        </div>
+        <div class="col-12 col-md-6">
+          <label class="form-label">Buscar anuncio</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-search"></i></span>
+            <input type="text" class="form-control" placeholder="Escribe una palabra clave…">
+            <button class="btn btn-outline-secondary">Limpiar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lista de anuncios -->
+  <div class="card shadow-sm rounded-4">
+    <div class="card-body">
+
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h3 class="h6 mb-0">Anuncios recientes</h3>
+        <small class="text-secondary">Última actualización: 28/10/2025</small>
+      </div>
+
+      <div class="list-group list-group-flush">
+        <!-- Anuncio 1 -->
+        <div class="list-group-item py-3 px-2 border-bottom">
+          <div class="d-flex justify-content-between align-items-start">
+            <div>
+              <h5 class="fw-semibold mb-1">Entrega del proyecto final</h5>
+              <div class="text-secondary small mb-2">
+                Curso: <strong>Bases de Datos</strong> · Sección B · Publicado por <strong>Licda. M. López</strong>
+              </div>
+              <p class="mb-2">
+                Recuerden que la entrega del proyecto final se realizará el <strong>02/11/2025</strong>.
+                No se aceptarán envíos posteriores a la fecha límite. Revisen la rúbrica en la plataforma.
+              </p>
+              <div>
+                <span class="badge bg-primary-subtle text-primary-emphasis me-1">Proyecto</span>
+                <span class="badge bg-info-subtle text-info-emphasis">Importante</span>
+              </div>
+            </div>
+            <small class="text-secondary">Publicado hace 2 días</small>
+          </div>
+        </div>
+
+        <!-- Anuncio 2 -->
+        <div class="list-group-item py-3 px-2 border-bottom">
+          <div class="d-flex justify-content-between align-items-start">
+            <div>
+              <h5 class="fw-semibold mb-1">Suspensión de clases el viernes</h5>
+              <div class="text-secondary small mb-2">
+                Curso: <strong>Redes de Computadoras</strong> · Sección C · Publicado por <strong>Ing. J. Martínez</strong>
+              </div>
+              <p class="mb-2">
+                El día <strong>viernes 31/10</strong> no habrá clase presencial debido a mantenimiento en el laboratorio.
+                Se compartirá material de repaso en el aula virtual.
+              </p>
+              <span class="badge bg-warning-subtle text-warning-emphasis">Aviso general</span>
+            </div>
+            <small class="text-secondary">Publicado hace 1 día</small>
+          </div>
+        </div>
+
+        <!-- Anuncio 3 -->
+        <div class="list-group-item py-3 px-2 border-bottom">
+          <div class="d-flex justify-content-between align-items-start">
+            <div>
+              <h5 class="fw-semibold mb-1">Subida de notas parcial 2</h5>
+              <div class="text-secondary small mb-2">
+                Curso: <strong>Algoritmos I</strong> · Sección A · Publicado por <strong>Ing. R. Castillo</strong>
+              </div>
+              <p class="mb-2">
+                Las notas del segundo parcial ya se encuentran disponibles. Si tienen dudas, pueden escribir por mensajería interna.
+              </p>
+              <span class="badge bg-success-subtle text-success-emphasis">Información</span>
+            </div>
+            <small class="text-secondary">Publicado hace 3 días</small>
+          </div>
+        </div>
+
+        <!-- Sin registros -->
+        <div class="list-group-item py-5 text-center text-secondary" *ngIf="false">
+          No hay anuncios disponibles por el momento.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Nuevo anuncio -->
+<div class="modal fade" id="nuevoAnuncioModal" tabindex="-1" aria-labelledby="nuevoAnuncioLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-scrollable">
+    <div class="modal-content rounded-4">
+      <div class="modal-header">
+        <h5 class="modal-title" id="nuevoAnuncioLabel"><i class="bi bi-megaphone me-1"></i>Nuevo anuncio</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="row g-3">
+            <div class="col-12 col-md-6">
+              <label class="form-label">Curso</label>
+              <select class="form-select">
+                <option selected disabled>Selecciona un curso…</option>
+                <option>Algoritmos I</option>
+                <option>Bases de Datos</option>
+                <option>Redes de Computadoras</option>
+              </select>
+            </div>
+            <div class="col-6 col-md-3">
+              <label class="form-label">Sección</label>
+              <select class="form-select">
+                <option>A</option><option>B</option><option>C</option>
+              </select>
+            </div>
+            <div class="col-6 col-md-3">
+              <label class="form-label">Categoría</label>
+              <select class="form-select">
+                <option value="info">Información</option>
+                <option value="aviso">Aviso general</option>
+                <option value="importante">Importante</option>
+              </select>
+            </div>
+            <div class="col-12">
+              <label class="form-label">Título del anuncio</label>
+              <input type="text" class="form-control" placeholder="Ej. ‘Cambio de aula para el martes’">
+            </div>
+            <div class="col-12">
+              <label class="form-label">Mensaje</label>
+              <textarea class="form-control" rows="5" placeholder="Escribe el contenido del aviso…"></textarea>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button class="btn btn-success"><i class="bi bi-send me-1"></i>Publicar anuncio</button>
+      </div>
+    </div>
+  </div>
+</div>

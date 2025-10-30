@@ -1,1 +1,159 @@
-<p>upload-tasks works!</p>
+<div class="container py-4">
+
+  <!-- Encabezado -->
+  <div class="card shadow-sm rounded-4 mb-4">
+    <div class="card-body">
+      <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+        <h2 class="h5 mb-0">Subir tareas</h2>
+        <a class="btn btn-outline-secondary" routerLink="/panel">Panel</a>
+      </div>
+      <p class="text-secondary mb-0 mt-2">Publica una nueva tarea para tus estudiantes o adjunta recursos de apoyo.</p>
+    </div>
+  </div>
+
+  <!-- Formulario de tarea -->
+  <div class="card shadow-sm rounded-4 mb-4">
+    <div class="card-body">
+      <div class="row g-3">
+
+        <div class="col-12 col-md-6">
+          <label class="form-label">Curso</label>
+          <select class="form-select">
+            <option selected disabled>Selecciona un curso…</option>
+            <option>Algoritmos I</option>
+            <option>Bases de Datos</option>
+            <option>Redes de Computadoras</option>
+          </select>
+        </div>
+
+        <div class="col-6 col-md-3">
+          <label class="form-label">Sección</label>
+          <select class="form-select">
+            <option selected disabled>—</option>
+            <option>A</option><option>B</option><option>C</option>
+          </select>
+        </div>
+
+        <div class="col-6 col-md-3">
+          <label class="form-label">Fecha de entrega</label>
+          <input type="date" class="form-control">
+        </div>
+
+        <div class="col-12">
+          <label class="form-label">Título de la tarea</label>
+          <input type="text" class="form-control" placeholder="Ej. ‘Tarea 3 – Árboles binarios’">
+        </div>
+
+        <div class="col-12">
+          <label class="form-label">Instrucciones</label>
+          <textarea class="form-control" rows="5" placeholder="Describe claramente los requisitos, rúbrica y modo de entrega."></textarea>
+          <div class="form-text">Se recomienda incluir criterios de evaluación y ejemplos.</div>
+        </div>
+
+        <div class="col-12 col-lg-6">
+          <label class="form-label">Adjuntos (PDF, DOCX, ZIP)</label>
+          <div class="border rounded-4 p-4 text-center bg-body-tertiary">
+            <div class="mb-2">
+              <i class="bi bi-paperclip display-6"></i>
+            </div>
+            <p class="text-secondary mb-3">Arrastra archivos aquí o selecciónalos</p>
+            <div class="d-flex gap-2 justify-content-center">
+              <input type="file" class="form-control" multiple
+                     accept=".pdf,.doc,.docx,.zip,.rar,.ppt,.pptx,.xlsx,.csv" />
+              <button class="btn btn-primary">Subir</button>
+            </div>
+            <!-- Progreso (opcional) -->
+            <div class="progress mt-3" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+              <div class="progress-bar" style="width: 0%"></div>
+            </div>
+          </div>
+          <div class="form-text mt-2">Tamaño máximo por archivo: 20 MB.</div>
+        </div>
+
+        <div class="col-12 col-lg-6">
+          <div class="border rounded-4 p-3 bg-body-tertiary h-100">
+            <div class="d-flex align-items-center gap-2 mb-2">
+              <i class="bi bi-shield-check text-success"></i>
+              <strong>Visibilidad y opciones</strong>
+            </div>
+            <div class="row g-2">
+              <div class="col-12">
+                <label class="form-label">Visibilidad</label>
+                <select class="form-select">
+                  <option selected>Público para el curso</option>
+                  <option>Borrador (no visible)</option>
+                </select>
+              </div>
+              <div class="col-12">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="chkLate">
+                  <label class="form-check-label" for="chkLate">Permitir entregas tardías</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="chkPlag">
+                  <label class="form-check-label" for="chkPlag">Activar revisión de similitud</label>
+                </div>
+              </div>
+            </div>
+            <div class="mt-3">
+              <span class="badge bg-primary-subtle text-primary-emphasis me-1">PDF</span>
+              <span class="badge bg-secondary-subtle text-secondary-emphasis me-1">DOCX</span>
+              <span class="badge bg-warning-subtle text-warning-emphasis">ZIP</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Acciones -->
+      <div class="d-flex justify-content-end gap-2 mt-4">
+        <button class="btn btn-outline-secondary">Guardar borrador</button>
+        <button class="btn btn-success"><i class="bi bi-send me-1"></i>Publicar tarea</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tareas recientes -->
+  <div class="card shadow-sm rounded-4">
+    <div class="card-body">
+      <h3 class="h6 mb-3">Tareas recientes</h3>
+      <div class="table-responsive">
+        <table class="table align-middle">
+          <thead class="table-light">
+            <tr>
+              <th>Fecha</th>
+              <th>Tarea</th>
+              <th>Curso</th>
+              <th>Sección</th>
+              <th class="text-end">Acción</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>24/10/2025</td>
+              <td>Tarea 2 – Consultas SQL</td>
+              <td>Bases de Datos</td>
+              <td>B</td>
+              <td class="text-end">
+                <button class="btn btn-sm btn-outline-primary">Ver detalle</button>
+              </td>
+            </tr>
+            <tr>
+              <td>18/10/2025</td>
+              <td>Informe de topologías</td>
+              <td>Redes de Computadoras</td>
+              <td>C</td>
+              <td class="text-end">
+                <button class="btn btn-sm btn-outline-primary">Ver detalle</button>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="5" class="text-center text-secondary">No hay más registros.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -1,1 +1,83 @@
-<p>activities-calendar works!</p>
+<div class="container py-4">
+  <!-- Encabezado -->
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h1 class="h5 mb-0">Calendario académico</h1>
+    <div class="btn-group">
+      <button class="btn btn-outline-secondary" (click)="prev()"><i class="bi bi-chevron-left"></i></button>
+      <span class="btn btn-outline-secondary disabled text-capitalize">{{ monthLabel }}</span>
+      <button class="btn btn-outline-secondary" (click)="next()"><i class="bi bi-chevron-right"></i></button>
+    </div>
+  </div>
+
+  <!-- Calendario estilo “cuaderno” -->
+  <div class="calendar-notebook shadow-sm mx-auto">
+    <div class="cal-topbar"></div>
+    <div class="cal-rings"><span></span><span></span><span></span><span></span></div>
+
+    <!-- Cabecera días -->
+    <div class="cal-weekdays text-center text-secondary fw-semibold">
+      <div>Lun</div><div>Mar</div><div>Mié</div><div>Jue</div><div>Vie</div><div>Sáb</div><div>Dom</div>
+    </div>
+
+    <!-- Rejilla mensual dinámica (solo un mes, sin días de otros meses) -->
+    <div class="cal-grid">
+      <ng-container *ngFor="let cell of grid">
+        <div class="empty" *ngIf="cell === null"></div>
+        <button
+          class="day"
+          *ngIf="cell !== null"
+          [class.has-activity]="hasActivity(cell)">
+          <span class="day-number">{{ cell }}</span>
+        </button>
+      </ng-container>
+    </div>
+
+    <div class="d-flex align-items-center gap-2 small text-secondary px-3 pb-3">
+      <span class="legend-dot"></span> Día con actividad
+    </div>
+  </div>
+
+  <!-- ===== Listado de actividades del mes visible ===== -->
+  <div class="card shadow-sm rounded-4 border-0 mt-4">
+    <div class="card-body">
+      <h2 class="h6 mb-3">Actividades de {{ monthLabel }}</h2>
+
+      <div class="table-responsive">
+        <table class="table align-middle">
+          <thead class="table-light">
+            <tr>
+              <th>Fecha</th>
+              <th>Actividad</th>
+              <th class="d-none d-md-table-cell">Curso</th>
+              <th style="width: 140px;">Tipo</th>
+              <th class="text-end" style="width: 120px;">Acción</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let a of visibleActivities">
+              <td>
+                <div class="fw-medium">{{ a.dueAt | date:'dd/MM/yyyy' }}</div>
+                <div class="small text-secondary" *ngIf="a.time">{{ a.time }}</div>
+              </td>
+              <td class="fw-semibold">{{ a.title }}</td>
+              <td class="d-none d-md-table-cell">{{ a.course }}</td>
+              <td>
+                <span class="badge rounded-pill bg-primary-subtle text-primary-emphasis" *ngIf="a.type==='Tarea'">Tarea</span>
+                <span class="badge rounded-pill bg-danger-subtle text-danger-emphasis" *ngIf="a.type==='Examen'">Examen</span>
+                <span class="badge rounded-pill bg-success-subtle text-success-emphasis" *ngIf="a.type==='Proyecto'">Proyecto</span>
+                <span class="badge rounded-pill bg-warning-subtle text-warning-emphasis" *ngIf="a.type==='Evento'">Evento</span>
+              </td>
+              <td class="text-end">
+                <a class="btn btn-sm btn-outline-primary" [href]="a.link || '#'" (click)="$event.preventDefault()">Ver detalle</a>
+              </td>
+            </tr>
+            <tr *ngIf="visibleActivities.length === 0">
+              <td colspan="5" class="text-center text-secondary py-4">No hay actividades registradas para este mes.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+</div>
