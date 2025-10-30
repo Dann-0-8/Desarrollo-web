@@ -1,0 +1,26 @@
+.login-bg {
+  min-height: 100vh;
+  background: radial-gradient(1200px 600px at 10% -10%, #e6f0ff 10%, transparent 40%),
+  radial-gradient(900px 500px at 110% 10%, #f0f7ff 10%, transparent 40%),
+  linear-gradient(180deg, #f8fbff 0%, #ffffff 60%);
+}
+
+/* Colores del colegio (ajusta a tu paleta) */
+$school-primary: #1b6ef3;   // azul colegio
+$school-primary-dark: #1557bf;
+
+.bg-school { background-color: $school-primary; }
+.link-school { color: $school-primary; text-decoration: none;
+  &:hover { color: $school-primary-dark; text-decoration: underline; }
+}
+.btn-school {
+  background-color: $school-primary; border: none;
+  &:hover { background-color: $school-primary-dark; }
+}
+
+/* Card */
+.card { border-radius: 1rem; }
+.logo { width: 56px; height: 56px; }
+
+/* Pequeños detalles */
+.form-text { color: #6c757d; }
