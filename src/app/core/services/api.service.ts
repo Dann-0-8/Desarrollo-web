@@ -1,20 +1,29 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { jwtDecode } from 'jwt-decode';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
 
-type Jwt = { sub: string; role: 'teacher'|'student'; exp?: number };
+@Injectable({
+  providedIn: 'root'
+})
+export class ApiService {
+  private baseUrl = environment.apiBaseUrl;
 
-@Injectable({ providedIn: 'root' })
-export class AuthService {
-  private key = 'edu_token';
   constructor(private http: HttpClient) {}
-  login(username: string, password: string) {
-    return this.http.post<{ access_token: string }>(`${environment.apiBaseUrl}/auth/login`, { username, password });
+
+  get<T>(path: string, headers?: HttpHeaders): Observable<T> {
+    return this.http.get<T>(`${this.baseUrl}/${path}`, { headers });
   }
-  setToken(t: string){ localStorage.setItem(this.key, t); }
-  getToken(){ return localStorage.getItem(this.key); }
-  isLoggedIn(){ try{ const t=this.getToken(); if(!t) return false; const j=jwtDecode<Jwt>(t); if(j.exp && Date.now()>=j.exp*1000){ this.logout(); return false;} return true;}catch{return false;} }
-  getRole(){ try{ const t=this.getToken(); return t? jwtDecode<Jwt>(t).role : null; }catch{return null;} }
-  logout(){ localStorage.removeItem(this.key); }
+
+  post<T>(path: string, body: any, headers?: HttpHeaders): Observable<T> {
+    return this.http.post<T>(`${this.baseUrl}/${path}`, body, { headers });
+  }
+
+  put<T>(path: string, body: any, headers?: HttpHeaders): Observable<T> {
+    return this.http.put<T>(`${this.baseUrl}/${path}`, body, { headers });
+  }
+
+  delete<T>(path: string, headers?: HttpHeaders): Observable<T> {
+    return this.http.delete<T>(`${this.baseUrl}/${path}`, { headers });
+  }
 }
