@@ -3,7 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { jwtDecode } from 'jwt-decode';
 import { environment } from '../../../environments/environment';
 
-type Jwt = { sub: string; role: 'teacher' | 'student'; exp?: number };
+type Role = 'teacher' | 'student' | 'admin';
+type Jwt = { sub: string; role: Role; exp?: number };
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -11,10 +12,10 @@ export class AuthService {
 
   constructor(private http: HttpClient) {}
 
-  login(username: string, password: string) {
+  login(username: string, password: string, role: Role) {
     return this.http.post<{ access_token: string }>(
-      `${environment.apiBaseUrl}/auth/login`,
-      { username, password }
+      environment.apiBaseUrl+environment.urlLogin,
+      { username, password, role }
     );
   }
 
@@ -37,12 +38,13 @@ export class AuthService {
     }
   }
 
-
-  getRole(): 'teacher' | 'student' | null {
+  getRole(): Role | null {
     try {
       const t = this.getToken();
       return t ? jwtDecode<Jwt>(t).role : null;
-    } catch { return null; }
+    } catch {
+      return null;
+    }
   }
 
   logout() { localStorage.removeItem(this.key); }
